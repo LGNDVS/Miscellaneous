@@ -3,12 +3,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class Driver extends JPanel
+public class Game extends JPanel
 {
     JButton buttons[] = new JButton[9]; 
     int alternate = 0;//if this number is a even, then put a X. If it's odd, then put an O
     
-    public Driver()
+    public Game()
     {
       setLayout(new GridLayout(3,3));
       initializebuttons(); 
@@ -107,7 +107,7 @@ public class Driver extends JPanel
     {
         JFrame window = new JFrame("Tic-Tac-Toe");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.getContentPane().add(new Driver());
+        window.getContentPane().add(new Game());
         window.setBounds(1000,1000,1000,1000);
         window.setVisible(true);
     }

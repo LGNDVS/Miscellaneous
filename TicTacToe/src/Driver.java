@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Drvier {
+public class Driver {
 	
 	public static char[][] board = new char[3][3];
 	public static int gameCounter = 0;
