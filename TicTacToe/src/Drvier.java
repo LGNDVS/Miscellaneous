@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class TicTacToe {
+public class Drvier {
 	
 	public static char[][] board = new char[3][3];
 	public static int gameCounter = 0;
@@ -171,6 +171,7 @@ public class TicTacToe {
 		}
 		
 		System.out.println("Thanks for Playing!");
+		
 		
 		
 		
