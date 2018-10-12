@@ -19,84 +19,154 @@ public class TicTacToe {
 		System.out.println("Welcome to TicTacToe!");
 		
 		resetBoard();
+		System.out.println("Empty Board:");
 		printBoard();
+		System.out.println();
 		
 		Scanner sc = new Scanner(System.in);
 		
 		
 		while(!isGameOver) 
 		{
+			/* 
+			 * *********************************************************************
+			 *
+			 * PLAYER 0
+			 * 
+			 * *********************************************************************
+			 */
 			if(turn == 0)
 			{
 				
+				// Do while loop for checking PLAYER X's --> X position
 				do {
-				    System.out.println("Enter X Coordiante between 0 and 2");
+				    System.out.println("Player X --> Enter X Coordiante between 0 and 2:");
 				    while (!sc.hasNextInt()) {
-				        System.out.println("That's not a valid input, Plese try again");
+				    	System.out.println("That's not a valid input, try again\n"); 
+				        System.out.println("Player X --> Enter X Coordiante between 0 and 2: ");
 				        sc.next(); // this is important!
 				    }
 				    xCoord = sc.nextInt();
 				    
 				    if(xCoord < 0 || xCoord > 2) 
 				    {
-				    	System.out.println("Thats not a number between 0 and 2, try again");
+				    	System.out.println("Thats not a number between 0 and 2, try again \n");
 				    	
 				    }
 				} while (xCoord < 0 || xCoord > 2);
 				
-				System.out.println("X => " + xCoord);
 				
-				
+				// Do while loop for checking PLAYER X's --> Y position
 				do {
-				    System.out.println("Please enter Y Coordiante between 0 and 2!");
+				    System.out.println("Player X--> Enter Y Coordiante between 0 and 2:");
 				    while (!sc.hasNextInt()) {
-				        System.out.println("That's not a valid input!");
+				    	System.out.println("That's not a valid input, try again \n"); 
+				        System.out.println("Player X --> Enter Y Coordiante between 0 and 2: ");
 				        sc.next(); // this is important!
 				    }
 				    yCoord = sc.nextInt();
+				    
+				    if(yCoord < 0 || yCoord > 2) 
+				    {
+				    	System.out.println("Thats not a number between 0 and 2, try again \n");
+				    	
+				    }
 				} while (yCoord < 0 || yCoord > 2);
 				
-				System.out.println("Y => " + yCoord);
 				
-				System.out.println();
+				// Print out coordinates of player X's move
+				System.out.println("Player X play coordinate (" + xCoord + ", " + yCoord + ")\n");
+				
+				
+				// Conditional statement ot check if the input move is a free space
+				if(board[xCoord][yCoord] == 'X' || board[xCoord][yCoord] == 'O') 
+				{
+					System.out.println("Space is already taken, try again\n");
+					turn = 0;
+				}
+				else
+				{
 				board[xCoord][yCoord] = 'X';
+				turn = 1;
+				}
+				
 				printBoard();
+				System.out.println();
 				
 				determineWinner();
-				turn = 1;
+		
 			}
+			
+			
+			/* 
+			 * *********************************************************************
+			 *
+			 * PLAYER 0
+			 * 
+			 * *********************************************************************
+			 */
 			
 			else 
 			{
-								
+				
+				// Do while loop for checking PLAYER O's --> X position
 				do {
-				    System.out.println("Player O --> Please enter X Coordiante between 0 and 2!");
+				    System.out.println("Player O --> Enter X Coordiante between 0 and 2:");
 				    while (!sc.hasNextInt()) {
-				        System.out.println("That's not a valid input!");
+				        System.out.println("That's not a valid input, try again\n"); 
+				        System.out.println("Player O --> Enter X Coordiante between 0 and 2: ");
+				        
 				        sc.next(); // this is important!
 				    }
 				    xCoord = sc.nextInt();
+				    
+				    if(xCoord < 0 || xCoord > 2) 
+				    {
+				    	System.out.println("Thats not a number between 0 and 2, try again \n");
+				    	
+				    }
 				} while (xCoord < 0 || xCoord > 2);
 				
-				System.out.println("X => " + xCoord);
 				
-				
+				// Do while loop for checking PLAYER O's --> X position
 				do {
-				    System.out.println("Please enter Y Coordiante between 0 and 2!");
+				    System.out.println("Player O --> Enter Y Coordiante between 0 and 2:");
 				    while (!sc.hasNextInt()) {
-				        System.out.println("That's not a valid input!");
+				    	System.out.println("That's not a valid input, try again \n"); 
+				        System.out.println("Player O --> Enter Y Coordiante between 0 and 2: ");
 				        sc.next(); // this is important!
 				    }
 				    yCoord = sc.nextInt();
+				    
+				    if(yCoord < 0 || yCoord > 2) 
+				    {
+				    	System.out.println("Thats not a number between 0 and 2, try again \n");
+				    	
+				    }
 				} while (yCoord < 0 || yCoord > 2);
 				
-				System.out.println("Y => " + yCoord);
 				
-				System.out.println();
+				// Prints out coordinates of player O's move
+				System.out.println("Player O play coordinate (" + xCoord + ", " + yCoord + ")\n");
+				
+				
+				// Conditional statement to check if current input move is a free space
+				if(board[xCoord][yCoord] == 'X' || board[xCoord][yCoord] == 'O') 
+				{
+					System.out.println("Space is already taken, try again\n");
+					turn = 1;
+				}
+				else
+				{
 				board[xCoord][yCoord] = 'O';
-				printBoard();
-				determineWinner();
 				turn = 0;
+				}
+				
+				
+				printBoard();
+				System.out.println();
+				determineWinner();
+			
 			}
 		}
 		
