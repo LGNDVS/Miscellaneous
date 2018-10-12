@@ -7,6 +7,8 @@ public class TicTacToe {
 	public static boolean isValidInput = false;
 	public static boolean isGameOver = false;
 	public static char winner = ' ';
+	public static int xCoord = 0;
+	public static int yCoord = 0;
 	
 	// Player X = turn 0
 	// Player O = turn 1
@@ -26,11 +28,36 @@ public class TicTacToe {
 		{
 			if(turn == 0)
 			{
-				System.out.println("Player X --> Enter the coordinates of your play ");
-				System.out.print("X: ");
-				int xCoord = sc.nextInt();
-				System.out.print("Y: " );
-				int yCoord = sc.nextInt();
+				
+				do {
+				    System.out.println("Enter X Coordiante between 0 and 2");
+				    while (!sc.hasNextInt()) {
+				        System.out.println("That's not a valid input, Plese try again");
+				        sc.next(); // this is important!
+				    }
+				    xCoord = sc.nextInt();
+				    
+				    if(xCoord < 0 || xCoord > 2) 
+				    {
+				    	System.out.println("Thats not a number between 0 and 2, try again");
+				    	
+				    }
+				} while (xCoord < 0 || xCoord > 2);
+				
+				System.out.println("X => " + xCoord);
+				
+				
+				do {
+				    System.out.println("Please enter Y Coordiante between 0 and 2!");
+				    while (!sc.hasNextInt()) {
+				        System.out.println("That's not a valid input!");
+				        sc.next(); // this is important!
+				    }
+				    yCoord = sc.nextInt();
+				} while (yCoord < 0 || yCoord > 2);
+				
+				System.out.println("Y => " + yCoord);
+				
 				System.out.println();
 				board[xCoord][yCoord] = 'X';
 				printBoard();
@@ -41,14 +68,29 @@ public class TicTacToe {
 			
 			else 
 			{
-				System.out.println("Player O --> Enter the coordinates of your play ");
-				System.out.print("X: ");
+								
+				do {
+				    System.out.println("Player O --> Please enter X Coordiante between 0 and 2!");
+				    while (!sc.hasNextInt()) {
+				        System.out.println("That's not a valid input!");
+				        sc.next(); // this is important!
+				    }
+				    xCoord = sc.nextInt();
+				} while (xCoord < 0 || xCoord > 2);
 				
-				int xCoord = sc.nextInt();
+				System.out.println("X => " + xCoord);
 				
-				System.out.print("Y: ");
 				
-				int yCoord = sc.nextInt();
+				do {
+				    System.out.println("Please enter Y Coordiante between 0 and 2!");
+				    while (!sc.hasNextInt()) {
+				        System.out.println("That's not a valid input!");
+				        sc.next(); // this is important!
+				    }
+				    yCoord = sc.nextInt();
+				} while (yCoord < 0 || yCoord > 2);
+				
+				System.out.println("Y => " + yCoord);
 				
 				System.out.println();
 				board[xCoord][yCoord] = 'O';
